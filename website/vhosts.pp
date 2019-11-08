@@ -17,6 +17,8 @@ class { '::php':
   phpunit      => false,
 }
 
+package {'libapache2-mod-php': }
+
 apache::vhost { 'vhost.155.138.196.253.xip.io':
   port    => '80',
   docroot => '/var/www/vhost',
