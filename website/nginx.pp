@@ -15,12 +15,12 @@ class { '::php':
   phpunit      => false,
 }
 
-$name = "vhost"
+$vname = "vhost"
 $domain = "155.138.196.253.xip.io"
 $backend_port = 9000
 $full_web_path = '/var/www/vhost'
 
-nginx::resource::server { "${name}.${domain} ${name}":
+nginx::resource::server { "${vname}.${domain} ${vname}":
   ensure                => present,
   listen_port           => 80,
   www_root              => $full_web_path,
@@ -29,11 +29,11 @@ nginx::resource::server { "${name}.${domain} ${name}":
   index_files           => [ 'index.php' ],
 }
 
-nginx::resource::location { "${name}_root":
+nginx::resource::location { "${vname}_root":
   ensure          => present,
   ssl             => true,
   ssl_only        => true,
-  server           => "${name}.${::domain} ${name}",
+  server           => "${vname}.${::domain} ${vname}",
   www_root        => "${full_web_path}/",
   location        => '~ \.php$',
   index_files     => ['index.php', 'index.html', 'index.htm'],
