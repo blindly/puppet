@@ -31,8 +31,8 @@ nginx::resource::server { "${vname}.${domain} ${vname}":
 
 nginx::resource::location { "${vname}_root":
   ensure          => present,
-  ssl             => true,
-  ssl_only        => true,
+  ssl             => false,
+  ssl_only        => false,
   server           => "${vname}.${::domain} ${vname}",
   www_root        => "${full_web_path}/",
   location        => '~ \.php$',
