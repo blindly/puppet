@@ -1,3 +1,6 @@
+# puppet module install puppetlabs-apache --version 5.2.0
+# puppet module install puppet-php --version 7.0.0
+
 class {'apache': }
 
 class { '::php::globals':
@@ -31,5 +34,9 @@ apache::vhost { 'vhost2.155.138.196.253.xip.io':
 
 
 file {'/var/www/vhost/index.html': 
-  content => "It works";
+  ensure => "absent"
+}
+
+file {'/var/www/vhost/index.php': 
+  content => "<?php echo 'php works'; ?>";
 }
