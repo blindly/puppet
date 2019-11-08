@@ -24,8 +24,8 @@ nginx::resource::server { "${vname}.${domain} ${vname}":
   ensure                => present,
   listen_port           => 80,
   www_root              => $full_web_path,
-  proxy                 => $proxy,
-  location_cfg_append   => $location_cfg_append,
+  proxy                 => undef,
+  location_cfg_append   => undef,
   index_files           => [ 'index.php' ],
 }
 
